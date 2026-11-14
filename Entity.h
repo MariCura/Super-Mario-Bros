@@ -2,9 +2,9 @@
 #define ENTITY_H
 
 #include "Sprite.h"       // de aqui viene: Sprite
-#include "World.h"
-#include "Player.h"
 
+class World;              // declaracion adelantada (World.h se incluye en el .cpp)
+class Player;             // declaracion adelantada (Player hereda de Entity)
 
 // ---------------------------------------------------------------------------
 // Clase Entity  (ABSTRACTA)  -> aqui viven la HERENCIA y el POLIMORFISMO

@@ -1,5 +1,9 @@
 #include "Entity.h"
+#include "World.h"        // aqui si lo necesitamos completo: usamos World::paint
 
+// ---------------------------------------------------------------------------
+// Constructor: guarda la posicion y toma posesion del sprite.
+// ---------------------------------------------------------------------------
 Entity::Entity(int fila, int col, Sprite* sprite) {
     this->fila   = fila;        // fila   -> atributo de Entity
     this->col    = col;         // col    -> atributo de Entity
