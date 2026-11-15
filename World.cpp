@@ -1,11 +1,7 @@
 #include "World.h"
 
-
-// Cuantas filas de abajo son el piso de ladrillo.
 const int ALTO_PISO = 6;
 
-// Cuantas entidades como maximo. 1 mario + 1 goomba + 3 signos +
-// 3 maderas + 3 arbustos + 1 tuberia = 12, con 20 sobrado psright
 const int MAX_ENTIDADES = 32;
 
 // ---------------------------------------------------------------------------

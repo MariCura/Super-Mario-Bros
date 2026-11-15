@@ -17,10 +17,10 @@ Entity::~Entity() {
 }
 
 void Entity::pintarSprite(World& mundo, Sprite* dibujo) {
-    for (int i = 0; i < dibujo->getAlto(); i++) {          // getAlto  -> de Sprite
-        for (int j = 0; j < dibujo->getAncho(); j++) {     // getAncho -> de Sprite
-            Color c = dibujo->getColor(i, j);              // getColor -> de Sprite
-            mundo.paint(fila + i, col + j, c);             // paint    -> de World
+    for (int i = 0; i < dibujo->getAlto(); i++) {
+        for (int j = 0; j < dibujo->getAncho(); j++) {
+            Color c = dibujo->getColor(i, j);
+            mundo.paint(fila + i, col + j, c);
         }
     }
 }

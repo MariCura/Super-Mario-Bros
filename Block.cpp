@@ -5,16 +5,16 @@
 Block::Block(int fila, int col, Sprite* normal, bool daMoneda,
              Sprite* quemado, Sprite* moneda)
     : Entity(fila, col, normal) {
-    this->daMoneda = daMoneda;    // daMoneda -> atributo propio de Block
-    this->quemado  = quemado;     // quemado  -> atributo propio de Block
-    this->moneda   = moneda;      // moneda   -> atributo propio de Block
+    this->daMoneda = daMoneda;
+    this->quemado  = quemado;
+    this->moneda   = moneda;
     usado          = false;
     monedaMostrada = false;
 }
 
 Block::~Block() {
-    delete quemado;               // quemado -> atributo de Block
-    delete moneda;                // moneda  -> atributo de Block
+    delete quemado;
+    delete moneda;
 }
 
 // ---------------------------------------------------------------------------
@@ -42,21 +42,21 @@ void Block::draw(World& mundo) {
 }
 
 void Block::onTouch(Player& mario) {
-    if (daMoneda && !usado) {     // daMoneda, usado -> atributos de Block
+    if (daMoneda && !usado) {
         usado = true;
         mario.addCoin();          // addCoin -> metodo de Player
     }
 }
 
 bool Block::isUsado() const {
-    return usado;                 // usado -> atributo de Block
+    return usado;
 }
 
 void Block::setUsado(bool u) {
-    usado = u;                    // usado -> atributo de Block
-    monedaMostrada = u;           // si se carga como usado, no re-animar la moneda
+    usado = u;
+    monedaMostrada = u;
 }
 
 bool Block::getDaMoneda() const {
-    return daMoneda;              // daMoneda -> atributo de Block
+    return daMoneda;
 }

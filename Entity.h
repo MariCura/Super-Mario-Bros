@@ -16,8 +16,8 @@ protected:
     int     col;          // columna superior izquierda dentro del mundo
     Sprite* sprite;       // dibujo propio; COMPOSICION, se borra en ~Entity
 
-    // Pinta un sprite cualquiera en el mundo. Es protected para que las
-    // clases hijas (Block) puedan reusarla con otro sprite.
+
+
     void pintarSprite(World& mundo, Sprite* dibujo);
 
 public:
@@ -31,8 +31,8 @@ public:
 
     int getFila()  const;
     int getCol()   const;
-    int getAlto()  const;                    // sale de sprite->getAlto()
-    int getAncho() const;                    // sale de sprite->getAncho()
+    int getAlto()  const;
+    int getAncho() const;
     void setFila(int f);                     // la usa Player en move_player
     void setCol(int c);                      // la usa Player en move_player
 };
