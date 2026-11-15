@@ -74,33 +74,40 @@ Block* Game::crearTuberia(int fila, int col) {
 // ---------------------------------------------------------------------------
 void Game::crearEntidades() {
     // 03 arbustos (7 de alto): 37 + 7 = 44
-    agregar(crearArbusto(37, 40));
-    agregar(crearArbusto(37, 48));
-    agregar(crearArbusto(37, 56));
-    agregar(crearArbusto(37, 100));
-    agregar(crearArbusto(37, 180));
+    agregar(crearArbusto(37, 22));
+    agregar(crearArbusto(37, 30));
+    agregar(crearArbusto(37, 38));
+    agregar(crearArbusto(37, 84));
 
-    // 01 tuberia (12 de alto): 22 + 22 = 44
-    agregar(crearTuberia(22, 150));
+    agregar(crearArbusto(37, 189));
+    agregar(crearArbusto(37, 218));
+
+    agregar(crearTuberia(22, 135));
 
     // 03 bloques de madera, a la altura de salto de Mario
-    agregar(crearMadera(10, 108));
-    agregar(crearMadera(10, 132));
-    agregar(crearMadera(10, 188));
+    agregar(crearMadera(10, 70));
+    agregar(crearMadera(10, 88));
+    agregar(crearMadera(10, 106));
+
+    agregar(crearMadera(10, 231));
+    agregar(crearMadera(10, 213));
+    agregar(crearMadera(10, 195));
 
     // 03 bloques de signo (los que dan moneda), intercalados con las maderas
-    signos[0] = crearSigno(10, 36);
-    signos[1] = crearSigno(10, 120);
-    signos[2] = crearSigno(10, 200);
+    signos[0] = crearSigno(10, 35);
+    signos[1] = crearSigno(10, 79);
+    signos[2] = crearSigno(10, 97);
+
+    signos[3] = crearSigno(10, 222);
+    signos[4] = crearSigno(10, 204);
+    signos[5] = crearSigno(10, 135 + 29 + 5);
+
+
     nSignos = N_SIGNOS;
     for (int i = 0; i < N_SIGNOS; i++) {
         agregar(signos[i]);
     }
 
-    // 01 goomba (16 de alto y 16 de ancho): 28 + 16 = 44.
-    // Va al final del mapa (columnas 224 a 239) para que Mario pueda recorrer
-    // todo el mundo y recoger las 3 monedas antes de chocar con el.
-    // Con pasos de 12 columnas, la ultima posicion segura de Mario es la 204.
     agregar(new Goomba(28, 224));
 
     // Mario va al final para que se dibuje encima de todo lo demas.
@@ -129,7 +136,6 @@ void Game::init() {
     crearEntidades();               // crearEntidades -> metodo de Game
     corriendo = true;
 
-    cout << "$ init" << "\n";
     cout << "$ Welcome to the world of super mario bros xyz" << "\n";
     dibujar();
     cout << "$ Coins = " << mario->getCoins() << "\n";   // getCoins -> de Player
@@ -167,7 +173,7 @@ void Game::run() {
     while (corriendo) {
         cout << "$ ";
         if (!getline(cin, linea)) {
-            break;                   // fin de la entrada
+            break;
         }
         if (linea.empty()) {
             continue;
@@ -187,14 +193,14 @@ void Game::run() {
             break;
         }
 
-        historial.push_back(linea);  // historial -> atributo de Game
+        historial.push_back(linea);
 
         cout << "$ init" << "\n";
         for (size_t i = 0; i < historial.size(); i++) {
             cout << "$ " << historial[i] << "\n";
         }
 
-        ejecutar(linea);             // ejecutar -> metodo de Game
+        ejecutar(linea);
         dibujar();
         cout << "$ Coins = " << mario->getCoins() << "\n";
 

@@ -20,7 +20,7 @@ const int MARGEN_CAMARA  = 42;
 const int FILA_INICIAL   = 28;
 const int COL_INICIAL    = 24;
 const int MAX_ENTIDADES_JUEGO = 32;
-const int N_SIGNOS       = 3;     // Numero de coins p
+const int N_SIGNOS       = 6;     // Numero de coins p
 
 // ---------------------------------------------------------------------------
 // Clase Game

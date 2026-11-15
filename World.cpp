@@ -46,7 +46,7 @@ void World::create_world() {
     }
     for (int f = filas - ALTO_PISO; f < filas; f++) {
         for (int c = 0; c < cols; c++) {
-            if (c < 179 || 179 + 17 < c) {
+            if (c < 135 + 29 || 135 + 29 + 17 < c) {
                 grid[f][c] = Color::RED;
             } else {
                 grid[f][c] = Color::WHITE;
