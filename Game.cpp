@@ -111,8 +111,8 @@ void Game::crearEntidades() {
 
 // ---------------------------------------------------------------------------
 // dibujar: los tres pasos de cada frame.
-//   1. la camara recalcula el offset con la columna de Mario
-//   2. el mundo se repinta completo (240 columnas)
+//   1. la camara recalcula con la columna de Mario
+//   2. el mundo se repinta completo
 //   3. la camara imprime solo las 90 columnas visibles
 // ---------------------------------------------------------------------------
 void Game::dibujar() {
@@ -121,11 +121,7 @@ void Game::dibujar() {
     camara->draw_scene(*mundo);     // draw_scene -> de Camera
 }
 
-// ---------------------------------------------------------------------------
-// init: arma el juego y dibuja la primera escena.
-// ---------------------------------------------------------------------------
 void Game::init() {
-    habilitarAnsi();                // habilitarAnsi -> del modulo Colors
 
     mundo     = new World(FILAS_MUNDO, COLS_MUNDO);
     camara    = new Camera(ANCHO_ESCENA, MARGEN_CAMARA);
@@ -141,10 +137,6 @@ void Game::init() {
     cout << "$ Coins = " << mario->getCoins() << "\n";   // getCoins -> de Player
 }
 
-// ---------------------------------------------------------------------------
-// ejecutar: una linea puede traer varios movimientos ("right right").
-// Se aplican uno por uno.
-// ---------------------------------------------------------------------------
 void Game::ejecutar(const string& linea) {
     stringstream ss(linea);
     string opcion;
@@ -172,10 +164,6 @@ void Game::ejecutar(const string& linea) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// run: el bucle principal. Lee una linea y la procesa.
-// Reimprime el historial en cada turno, como en los ejemplos del enunciado.
-// ---------------------------------------------------------------------------
 void Game::run() {
     string linea;
 
@@ -220,15 +208,6 @@ void Game::run() {
     }
 }
 
-// ---------------------------------------------------------------------------
-// save: guarda el estado completo en un archivo de texto.
-// Formato (una cosa por linea):
-//   offset de la camara
-//   fila y columna de Mario
-//   monedas
-//   estado usado de los 3 signos
-//   cuantos comandos hay en el historial, y luego cada comando
-// ---------------------------------------------------------------------------
 void Game::save(const string& archivo) {
     ofstream salida(archivo.c_str());
     if (!salida) {
@@ -254,9 +233,6 @@ void Game::save(const string& archivo) {
     cout << "$ saved" << "\n";
 }
 
-// ---------------------------------------------------------------------------
-// load: lee el archivo y devuelve el juego a ese estado.
-// ---------------------------------------------------------------------------
 void Game::load(const string& archivo) {
     ifstream entrada(archivo.c_str());
     if (!entrada) {

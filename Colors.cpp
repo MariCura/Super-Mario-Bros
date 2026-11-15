@@ -2,25 +2,10 @@
 #include <iostream>
 
 
-#include <windows.h>
-
 
 using namespace std;
 
-// ---------------------------------------------------------------------------
-// habilitarAnsi: lo unico que cambia entre Windows y Linux en todo el proyecto.
-// ---------------------------------------------------------------------------
-void habilitarAnsi() {
-#ifdef _WIN32
-    // En Windows hay que pedirle a la consola que interprete los "\033[..m".
-    HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
-    DWORD modo = 0;
-    if (GetConsoleMode(salida, &modo)) {
-        SetConsoleMode(salida, modo | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-    }
-#endif
-    // En Linux y macOS no hace falta hacer nada.
-}
+
 
 // ---------------------------------------------------------------------------
 // fondo: traduce un Color del enum al codigo ANSI de color de fondo.

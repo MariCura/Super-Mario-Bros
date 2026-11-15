@@ -44,10 +44,6 @@ int Sprite::getAncho() const {
     return ancho;                     // ancho -> atributo de Sprite
 }
 
-// ---------------------------------------------------------------------------
-// getColor: devuelve el color de la celda (i,j) del dibujo.
-// Si el indice se sale de la paleta devolvemos NONE para no pintar basura.
-// ---------------------------------------------------------------------------
 Color Sprite::getColor(int i, int j) const {
     if (i < 0 || i >= alto || j < 0 || j >= ancho) {
         return Color::NONE;

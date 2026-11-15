@@ -2,10 +2,6 @@
 #include "Player.h"       // aqui si lo necesitamos completo: llamamos a addCoin()
 #include "World.h"        // lo necesita pintarSprite
 
-// ---------------------------------------------------------------------------
-// Constructor: el sprite normal se lo entrega a Entity; los otros dos
-// sprites (quemado y moneda) los guarda Block.
-// ---------------------------------------------------------------------------
 Block::Block(int fila, int col, Sprite* normal, bool daMoneda,
              Sprite* quemado, Sprite* moneda)
     : Entity(fila, col, normal) {
@@ -16,10 +12,6 @@ Block::Block(int fila, int col, Sprite* normal, bool daMoneda,
     monedaMostrada = false;
 }
 
-// ---------------------------------------------------------------------------
-// Destructor: Entity ya borra el sprite normal, aqui borramos los otros dos.
-// delete sobre nullptr es seguro, por eso no hace falta un if.
-// ---------------------------------------------------------------------------
 Block::~Block() {
     delete quemado;               // quemado -> atributo de Block
     delete moneda;                // moneda  -> atributo de Block
@@ -52,9 +44,6 @@ void Block::draw(World& mundo) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// onTouch: POLIMORFISMO. Solo los bloques de signo dan moneda, y solo una vez.
-// ---------------------------------------------------------------------------
 void Block::onTouch(Player& mario) {
     if (daMoneda && !usado) {     // daMoneda, usado -> atributos de Block
         usado = true;
