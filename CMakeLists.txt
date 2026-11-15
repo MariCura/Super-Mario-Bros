@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(SuperMarioBrosXYZ
         main.cpp
-        Colors.cpp
-        Sprite.cpp
         Entity.cpp
         Player.cpp
         Goomba.cpp
@@ -15,4 +13,5 @@ add_executable(SuperMarioBrosXYZ
         World.cpp
         Camera.cpp
         Game.cpp
+        Color.h
 )

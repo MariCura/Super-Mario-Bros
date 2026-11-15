@@ -1,7 +1,7 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
-#include "Entity.h"       // de aqui viene: Entity (clase base)
+#include "Entity.h"
 
 class Block : public Entity {
 private:

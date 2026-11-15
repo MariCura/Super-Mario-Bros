@@ -1,3 +1,7 @@
+//
+// Created by rnap on 8/11/26.
+//
+
 #ifndef CAMERA_H
 #define CAMERA_H
 #include "World.h"

@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "Colors.h"
+#include "Color.h"
 
 using namespace std;
 

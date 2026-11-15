@@ -1,5 +1,8 @@
-#include "Game.h"
+//
+// Created by rnap on 8/11/26.
+//
 
+#include "Game.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -138,7 +141,9 @@ void Game::init() {
 
     cout << "$ Welcome to the world of super mario bros xyz" << "\n";
     dibujar();
-    cout << "$ Coins = " << mario->getCoins() << "\n";   // getCoins -> de Player
+    cout << "$ Coins = " << mario->getCoins() << "\n";
+
+
 }
 
 void Game::ejecutar(const string& linea) {

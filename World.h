@@ -1,8 +1,12 @@
+//
+// Created by rnap on 8/11/26.
+//
+
 #ifndef WORLD_H
 #define WORLD_H
 #include "Entity.h"
 #include "Player.h"
-#include "Colors.h"
+#include "Color.h"
 
 class World {
 private:

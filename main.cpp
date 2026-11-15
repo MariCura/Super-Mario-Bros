@@ -1,23 +1,18 @@
 #include <iostream>
 
 #include "Game.h"
-
+#include "Player.h"
 
 int main() {
     Game juego;
     string input;
-    bool correct = false;
-    while (!correct) {
-        cin >> input;
-        correct = true;
-        if (input == "init") {
-            juego.init();
-            juego.run();
-        } else if (input == "load") {
-            juego.load("partida.txt");
-        }
 
-    }
+    do {
+        cout << "& Ingrese init para empezar el juego"<< "\n";
+        cout << "$ "; cin >> input;
+    } while (input != "init");
+    juego.init();
+    juego.run();
 
 
     return 0;

@@ -1,3 +1,7 @@
+//
+// Created by rnap on 8/11/26.
+//
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -9,7 +13,7 @@
 #include "Player.h"
 #include "Goomba.h"
 #include "Block.h"
-#include "Colors.h"
+#include "Color.h"
 using namespace std;
 // ------------------------- CONSTANTES ----------------------------
 
@@ -44,7 +48,7 @@ private:
 
     void agregar(Entity* e);         // guarda la entidad y se la pasa a World
     void crearEntidades();           // arma el mundo enterillo
-    void dibujar();                  // actualiza la camara + draw_world + draw_scene
+
 
 
     Block* crearSigno(int fila, int col);
@@ -55,6 +59,7 @@ private:
 public:
     Game();
     ~Game();
+    void dibujar();
 
     void init();
     void run();

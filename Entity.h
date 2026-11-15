@@ -1,7 +1,11 @@
+//
+// Created by rnap on 8/11/26.
+//
+
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "Sprite.h"
+#include "Color.h"
 
 class World;
 class Player;
