@@ -1,15 +1,8 @@
 #include "Colors.h"
 #include <iostream>
 
-
-
 using namespace std;
 
-
-
-// ---------------------------------------------------------------------------
-// fondo: traduce un Color del enum al codigo ANSI de color de fondo.
-// ---------------------------------------------------------------------------
 string fondo(Color color) {
     switch (color) {
         case Color::BLACK:           return "\033[40m";
@@ -25,10 +18,7 @@ string fondo(Color color) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// imprimirCelda: fondo de color + espacios + reset.
-// La llama Camera::draw_scene una vez por celda visible.
-// ---------------------------------------------------------------------------
+
 void imprimirCelda(Color color) {
     cout << fondo(color);
     for (int i = 0; i < ANCHO_CELDA; i++) {
@@ -39,7 +29,6 @@ void imprimirCelda(Color color) {
 
 // --------------------------- SPRITES Y PALETAS -----------------------------
 
-// Mario: 16 filas x 12 columnas
 const int MARIO_SPRITE[16][12] = {
     {0,0,0,1,1,1,1,1,0,0,0,0},
     {0,0,1,1,1,1,1,1,1,1,1,0},
@@ -59,7 +48,7 @@ const int MARIO_SPRITE[16][12] = {
     {0,2,2,2,0,0,0,0,2,2,2,0}
 };
 const Color MARIO_PALETTE[6] = {
-    Color::NONE,              // 0 = transparente
+    Color::NONE,
     Color::LIGHTRED_EX,
     Color::BLACK,
     Color::LIGHTWHITE_EX,
@@ -67,7 +56,7 @@ const Color MARIO_PALETTE[6] = {
     Color::LIGHTYELLOW_EX
 };
 
-// Goomba: 16 filas x 16 columnas
+
 const int GOOMBA_SPRITE[16][16] = {
     {0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0},
     {0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0},
@@ -87,13 +76,13 @@ const int GOOMBA_SPRITE[16][16] = {
     {0,0,0,2,2,2,2,0,0,2,2,2,2,0,0,0}
 };
 const Color GOOMBA_PALETTE[4] = {
-    Color::NONE,              // 0 = transparente
+    Color::NONE,
     Color::YELLOW,
     Color::BLACK,
     Color::LIGHTWHITE_EX
 };
 
-// Arbusto (arbol pequeno): 7 filas x 8 columnas
+
 const int TREE_SPRITE[7][8] = {
     {0,0,0,1,1,0,0,0},
     {0,0,1,1,1,1,0,0},
@@ -104,12 +93,11 @@ const int TREE_SPRITE[7][8] = {
     {1,1,1,1,1,1,1,1}
 };
 const Color TREE_PALETTE[2] = {
-    Color::NONE,              // 0 = transparente
+    Color::NONE,
     Color::GREEN
 };
 
-// Bloque de madera: 9 filas x 9 columnas
-// Aqui el indice 0 SI se pinta: es el cuerpo rojo del bloque.
+
 const int BLOCK_MADERA_SPRITE[9][9] = {
     {0,0,0,0,1,0,0,0,0},
     {0,0,0,0,1,0,0,0,0},
@@ -122,12 +110,11 @@ const int BLOCK_MADERA_SPRITE[9][9] = {
     {0,0,0,0,1,0,0,0,0}
 };
 const Color BLOCK_MADERA_PALETTE[2] = {
-    Color::RED,               // 0 = cuerpo del bloque (NO transparente)
+    Color::RED,
     Color::BLACK
 };
 
-// Bloque de signo (lucky block): 9 filas x 9 columnas
-// Igual que la madera, el indice 0 es el cuerpo amarillo.
+
 const int BLOCK_SIGNO_SPRITE[9][9] = {
     {0,0,0,0,0,0,0,0,0},
     {0,0,0,1,1,1,0,0,0},
@@ -139,7 +126,7 @@ const int BLOCK_SIGNO_SPRITE[9][9] = {
     {0,0,0,0,1,0,0,0,0},
     {0,0,0,0,0,0,0,0,0}
 };
-// El mismo bloque despues de darle: todo negro (quemado).
+
 const int BLOCK_SIGNO_QUEMADO[9][9] = {
     {1,1,1,1,1,1,1,1,1},
     {1,1,1,1,1,1,1,1,1},
@@ -152,11 +139,11 @@ const int BLOCK_SIGNO_QUEMADO[9][9] = {
     {1,1,1,1,1,1,1,1,1}
 };
 const Color BLOCK_SIGNO_PALETTE[2] = {
-    Color::LIGHTYELLOW_EX,    // 0 = cuerpo del bloque (NO transparente)
+    Color::LIGHTYELLOW_EX,
     Color::BLACK
 };
 
-// Moneda: 7 filas x 7 columnas
+
 const int COIN_SPRITE[7][7] = {
     {0,0,1,1,1,0,0},
     {0,1,1,1,1,1,0},
@@ -167,12 +154,12 @@ const int COIN_SPRITE[7][7] = {
     {0,0,1,1,1,0,0}
 };
 const Color COIN_PALETTE[3] = {
-    Color::NONE,              // 0 = transparente
+    Color::NONE,
     Color::YELLOW,
     Color::BLACK
 };
 
-// Tuberia: 12 filas x 14 columnas (boca ancha arriba, cuerpo angosto abajo)
+
 const int PIPE_SPRITE[22][17] = {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -199,6 +186,6 @@ const int PIPE_SPRITE[22][17] = {
 
 };
 const Color PIPE_PALETTE[2] = {
-    Color::NONE,              // 0 = transparente
+    Color::NONE,
     Color::GREEN
 };

@@ -1,7 +1,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "Sprite.h"       // de aqui viene: Sprite
+#include "Sprite.h"
 
 class World;
 class Player;
@@ -18,19 +18,19 @@ protected:
 
 public:
     Entity(int fila, int col, Sprite* sprite);
-    virtual ~Entity();                       // virtual: se borra bien por puntero base
+    virtual ~Entity();
 
     virtual void draw(World& mundo);         // POLIMORFISMO: Block la redefine
     virtual void onTouch(Player& mario) = 0; // VIRTUAL PURA: hace a Entity abstracta
 
-    bool collides(const Entity& otra) const; // choque de dos rectangulos
+    bool colicion(const Entity& otra) const;
 
-    int getFila()  const;                    // fila   -> atributo de Entity
-    int getCol()   const;                    // col    -> atributo de Entity
+    int getFila()  const;
+    int getCol()   const;
     int getAlto()  const;                    // sale de sprite->getAlto()
     int getAncho() const;                    // sale de sprite->getAncho()
-    void setFila(int f);                     // la usa Player::move_player
-    void setCol(int c);                      // la usa Player::move_player
+    void setFila(int f);                     // la usa Player en move_player
+    void setCol(int c);                      // la usa Player en move_player
 };
 
 #endif

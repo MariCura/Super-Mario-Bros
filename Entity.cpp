@@ -25,7 +25,7 @@ void Entity::draw(World& mundo) {
     pintarSprite(mundo, sprite);   // pintarSprite -> metodo propio de Entity
 }
 
-bool Entity::collides(const Entity& otra) const {
+bool Entity::colicion(const Entity& otra) const {
     bool cruzanFilas = (fila < otra.fila + otra.getAlto()) &&
                        (otra.fila < fila + getAlto());
 

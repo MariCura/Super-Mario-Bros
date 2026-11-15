@@ -73,7 +73,7 @@ void World::collect_coins(Player& mario) {
         if (entidades[i] == &mario) {
             continue;                       // Mario no se toca a si mismo
         }
-        if (entidades[i]->collides(mario)) {    // collides -> de Entity
+        if (entidades[i]->colicion(mario)) {    // collides -> de Entity
             entidades[i]->onTouch(mario);       // onTouch  -> virtual pura de Entity
         }
     }
