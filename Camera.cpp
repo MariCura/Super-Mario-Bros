@@ -1,6 +1,10 @@
+//
+// Created by rnap on 8/11/26.
+//
+
 #include "Camera.h"
-#include "World.h"        // aqui si lo necesitamos completo: leemos la grilla
-#include "Colors.h"       // de aqui viene: imprimirCelda
+#include "World.h"
+#include "Color.h"
 #include <iostream>
 
 using namespace std;
