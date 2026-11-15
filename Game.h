@@ -13,11 +13,11 @@
 using namespace std;
 // ------------------------- CONSTANTES ----------------------------
 
-const int FILAS_MUNDO    = 50;    // alto del mundo xyz
-const int COLS_MUNDO     = 240;   // ancho del mundo xyz
-const int ANCHO_ESCENA   = 90;    // columnas que se ven en consola
-const int MARGEN_CAMARA  = 42;    // celdas libres a la derecha de Mario
-const int FILA_INICIAL   = 28;    // Mario mide 16, 28 + 16 = 44 = borde del piso
+const int FILAS_MUNDO    = 50;
+const int COLS_MUNDO     = 240;
+const int ANCHO_ESCENA   = 90;
+const int MARGEN_CAMARA  = 42;
+const int FILA_INICIAL   = 28;
 const int COL_INICIAL    = 24;
 const int MAX_ENTIDADES_JUEGO = 32;
 const int N_SIGNOS       = 3;     // Numero de coins p
@@ -35,18 +35,18 @@ private:
     World*   mundo;                  // COMPOSICION
     Camera*  camara;                 // COMPOSICION
     Player*  mario;                  // COMPOSICION (tambien esta en entidades)
-    Entity** entidades;              // todas las entidades, para poder borrarlas
+    Entity** entidades;              // todas las entidades, para poder borrarlas p
     int      nEntidades;
     Block*   signos[N_SIGNOS];
     int      nSignos;
     bool     corriendo;
-    vector<string> historial;   // comandos escritos, para reimprimirlos
+    vector<string> historial;   // historial de comandos
 
     void agregar(Entity* e);         // guarda la entidad y se la pasa a World
     void crearEntidades();           // arma el mundo enterillo
     void dibujar();                  // actualiza la camara + draw_world + draw_scene
 
-    // Fabricas pequenas: cada una crea el Sprite que le toca y devuelve el Block.
+
     Block* crearSigno(int fila, int col);
     Block* crearMadera(int fila, int col);
     Block* crearArbusto(int fila, int col);
@@ -54,13 +54,13 @@ private:
 
 public:
     Game();
-    ~Game();                                  // borra entidades, mundo y camara
+    ~Game();
 
-    void init();                              // comando "init"
-    void run();                               // bucle principal
-    void ejecutar(const std::string& linea);  // aplica una linea de movimientos
-    void save(const std::string& archivo);    // comando "save"
-    void load(const std::string& archivo);    // comando "load"
+    void init();
+    void run();
+    void ejecutar(const std::string& linea);
+    void save(const std::string& archivo);
+    void load(const std::string& archivo);
 };
 
 #endif

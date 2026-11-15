@@ -1,63 +1,46 @@
 #include "Player.h"
-#include "Colors.h"       // de aqui vienen: MARIO_SPRITE y MARIO_PALETTE
+#include "Colors.h"
 
 using namespace std;
 
-// Pasos de movimiento que pide el enunciado.
-const int PASO_HORIZONTAL = 12;   // right y left mueven 12 columnas
-const int PASO_VERTICAL   = 16;   // up sube 16 filas
 
-// ---------------------------------------------------------------------------
-// Constructor: crea su Sprite y se lo entrega a Entity (clase base).
-// &MARIO_SPRITE[0][0] es el primer elemento, porque Sprite recibe el
-// sprite aplanado.
-// ---------------------------------------------------------------------------
 Player::Player(int fila, int col)
     : Entity(fila, col, new Sprite(16, 12, &MARIO_SPRITE[0][0], MARIO_PALETTE, 6)) {
-    coins    = 0;          // coins    -> atributo propio de Player
-    vivo     = true;       // vivo     -> atributo propio de Player
-    enElAire = false;      // enElAire -> atributo propio de Player
+    coins    = 0;
+    vivo     = true;
+    enElAire = false;
 }
 
-// Mario no se toca a si mismo, pero onTouch es virtual pura en Entity
-// asi que hay que darle un cuerpo (vacio) para que Player se pueda crear.
-// El parametro va sin nombre porque no se usa.
 void Player::onTouch(Player&) {
 }
-
-// ---------------------------------------------------------------------------
-// move_player: calcula la posicion nueva, revisa que quepa y recien ahi
-// la aplica. Si no cabe no mueve nada y devuelve false, para que Game
-// imprima "invalid operation" sin terminar el juego.
-// ---------------------------------------------------------------------------
 bool Player::move_player(const string& opcion, int filasMundo, int colsMundo) {
     int nuevaFila = fila;      // fila -> heredado de Entity
     int nuevaCol  = col;       // col  -> heredado de Entity
     enElAire = false;
 
     if (opcion == "right") {
-        nuevaCol += PASO_HORIZONTAL;
+        nuevaCol += 12;
     }
     else if (opcion == "left") {
-        nuevaCol -= PASO_HORIZONTAL;
+        nuevaCol -= 12;
     }
     else if (opcion == "up") {
-        nuevaFila -= PASO_VERTICAL;
+        nuevaFila -= 16;
         enElAire = true;
     }
     else if (opcion == "up-right") {
-        nuevaCol  += PASO_HORIZONTAL;
-        nuevaFila -= PASO_VERTICAL;
+        nuevaCol  += 12;
+        nuevaFila -= 16;
         enElAire = true;
     }
     else if (opcion == "up-left") {
-        nuevaCol  -= PASO_HORIZONTAL;
-        nuevaFila -= PASO_VERTICAL;
+        nuevaCol  -= 12;
+        nuevaFila -= 16;
         enElAire = true;
     }
     else {
         enElAire = false;
-        return false;          // comando que no existe
+        return false;
     }
 
     // Revisamos que el rectangulo de Mario entre completo en el mundo.
@@ -75,37 +58,33 @@ bool Player::move_player(const string& opcion, int filasMundo, int colsMundo) {
     return true;
 }
 
-// ---------------------------------------------------------------------------
-// caer: despues de dibujar el salto, Mario vuelve a su fila de abajo.
-// El movimiento horizontal del salto diagonal si se queda.
-// ---------------------------------------------------------------------------
 void Player::caer() {
     if (enElAire) {
-        setFila(fila + PASO_VERTICAL);   // setFila -> heredado de Entity
+        setFila(fila + 16);
         enElAire = false;
     }
 }
 
 bool Player::isEnElAire() const {
-    return enElAire;           // enElAire -> atributo de Player
+    return enElAire;
 }
 
 void Player::addCoin() {
-    coins++;                   // coins -> atributo de Player
+    coins++;
 }
 
 int Player::getCoins() const {
-    return coins;              // coins -> atributo de Player
+    return coins;
 }
 
 void Player::setCoins(int c) {
-    coins = c;                 // coins -> atributo de Player
+    coins = c;
 }
 
 void Player::matar() {
-    vivo = false;              // vivo -> atributo de Player
+    vivo = false;
 }
 
 bool Player::isVivo() const {
-    return vivo;               // vivo -> atributo de Player
+    return vivo;
 }

@@ -1,6 +1,6 @@
 #include "Block.h"
-#include "Player.h"       // aqui si lo necesitamos completo: llamamos a addCoin()
-#include "World.h"        // lo necesita pintarSprite
+#include "Player.h"
+#include "World.h"
 
 Block::Block(int fila, int col, Sprite* normal, bool daMoneda,
              Sprite* quemado, Sprite* moneda)
@@ -18,11 +18,8 @@ Block::~Block() {
 }
 
 // ---------------------------------------------------------------------------
-// draw: POLIMORFISMO. Redefine Entity::draw para elegir el sprite.
-//   - si todavia no lo golpean  -> sprite normal (heredado de Entity)
-//   - si ya lo golpearon        -> sprite quemado
-//   - ademas, el primer frame despues del golpe dibuja la moneda arriba
-// ---------------------------------------------------------------------------
+// draw: polimorfismo ps
+
 void Block::draw(World& mundo) {
     if (usado && quemado != nullptr) {
         pintarSprite(mundo, quemado);     // pintarSprite -> heredado de Entity

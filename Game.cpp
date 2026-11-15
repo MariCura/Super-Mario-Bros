@@ -20,7 +20,7 @@ Game::Game() {
 }
 
 // ---------------------------------------------------------------------------
-// Destructor: Game es la clase madre asi que borra lo demás.
+// Destructor: Game es la clase madre asi que borra lo demás, entidades y eso
 // ---------------------------------------------------------------------------
 Game::~Game() {
     for (int i = 0; i < nEntidades; i++) {
@@ -31,10 +31,6 @@ Game::~Game() {
     delete camara;
 }
 
-// ---------------------------------------------------------------------------
-// agregar: guarda la entidad en el arreglo propio (para borrarla despues)
-// y se la pasa a World (que solo la referencia: AGREGACION).
-// ---------------------------------------------------------------------------
 void Game::agregar(Entity* e) {
     if (nEntidades < MAX_ENTIDADES_JUEGO) {
         entidades[nEntidades] = e;
@@ -79,6 +75,8 @@ Block* Game::crearTuberia(int fila, int col) {
 void Game::crearEntidades() {
     // 03 arbustos (7 de alto): 37 + 7 = 44
     agregar(crearArbusto(37, 40));
+    agregar(crearArbusto(37, 48));
+    agregar(crearArbusto(37, 56));
     agregar(crearArbusto(37, 100));
     agregar(crearArbusto(37, 180));
 
@@ -146,11 +144,10 @@ void Game::ejecutar(const string& linea) {
 
         if (!valido) {
             cout << "$ invalid operation" << "\n";
-            continue;               // no mueve nada y sigue con el siguiente
+            continue;
         }
 
         if (mario->isEnElAire()) {
-            // La recoleccion pasa en el aire, como pide el enunciado.
             mundo->collect_coins(*mario);   // collect_coins -> de World
             dibujar();                      // frame del salto
             mario->caer();                  // caer -> de Player

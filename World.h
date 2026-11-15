@@ -4,16 +4,6 @@
 #include "Player.h"
 #include "Colors.h"
 
-// ---------------------------------------------------------------------------
-// Clase World
-// Es la matriz de 50 x 240 celdas de color, mas la lista de entidades que
-// hay que dibujar encima. Reemplaza a la global "World papita" y a
-// crear_world() y draw_world() del proyecto 1.
-//
-// Relacion con Entity: AGREGACION. World guarda punteros para dibujarlas
-// pero NO las crea ni las destruye; de eso se encarga Game.
-// Memoria dinamica: grid y entidades se reservan con new.
-// ---------------------------------------------------------------------------
 class World {
 private:
     int      filas;          // 50
@@ -31,8 +21,8 @@ public:
     void draw_world();                      // create_world + dibuja todas las entidades
     void collect_coins(Player& mario);      // revisa choques y llama a onTouch
 
-    void add(Entity* e);                    // registra una entidad (la llama Game::init)
-    void paint(int f, int c, Color color);  // pinta una celda; ignora Color::NONE
+    void add(Entity* e);                    // registra una entidad (la llama game::init)
+    void paint(int f, int c, Color color);
     Color getColor(int f, int c) const;     // la usa Camera::draw_scene
 
     int getFilas() const;

@@ -32,7 +32,7 @@ string fondo(Color color) {
 void imprimirCelda(Color color) {
     cout << fondo(color);
     for (int i = 0; i < ANCHO_CELDA; i++) {
-        cout << " ";
+        cout << "   ";
     }
     cout << "\033[0m";
 }

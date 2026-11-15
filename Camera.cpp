@@ -11,16 +11,6 @@ Camera::Camera(int ancho, int margen) {
     offset = 0;               // offset -> atributo propio de Camera
 }
 
-// ---------------------------------------------------------------------------
-// update: toda la logica de la camara en cinco lineas.
-//
-//   limite = ancho - anchoMario - margen = 90 - 12 - 42 = 36
-//   offset = colMario - limite
-//   luego se recorta entre 0 y (colsMundo - ancho) = 150
-//
-// Asi siempre queda el margen de 42 celdas libres a la derecha de Mario,
-// salvo al inicio (offset ya es 0) y al final (offset ya es 150).
-// ---------------------------------------------------------------------------
 void Camera::update(int colMario, int anchoMario, int colsMundo) {
     int limite = ancho - anchoMario - margen;   // 36
     int maximo = colsMundo - ancho;             // 150
@@ -35,10 +25,6 @@ void Camera::update(int colMario, int anchoMario, int colsMundo) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// draw_scene: imprime solo la ventana visible.
-// Es la funcion draw_scene() que pide el enunciado.
-// ---------------------------------------------------------------------------
 void Camera::draw_scene(const World& mundo) const {
     for (int f = 0; f < mundo.getFilas(); f++) {          // getFilas -> de World
         for (int c = offset; c < offset + ancho; c++) {
@@ -49,9 +35,9 @@ void Camera::draw_scene(const World& mundo) const {
 }
 
 int Camera::getOffset() const {
-    return offset;            // offset -> atributo de Camera
+    return offset;
 }
 
 void Camera::setOffset(int o) {
-    offset = o;               // offset -> atributo de Camera
+    offset = o;
 }

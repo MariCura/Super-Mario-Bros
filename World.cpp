@@ -1,6 +1,5 @@
 #include "World.h"
-#include "Entity.h"       // aqui si lo necesitamos completo: llamamos a draw y onTouch
-#include "Player.h"       // aqui si lo necesitamos completo: lo comparamos por puntero
+
 
 // Cuantas filas de abajo son el piso de ladrillo.
 const int ALTO_PISO = 6;
@@ -29,11 +28,7 @@ World::World(int filas, int cols) {
     create_world();               // create_world -> metodo propio de World
 }
 
-// ---------------------------------------------------------------------------
-// Destructor: borra la matriz y el arreglo de punteros.
-// OJO: NO hace delete de cada entidad, porque la relacion es AGREGACION.
-// Las entidades las borra Game, que es quien las creo.
-// ---------------------------------------------------------------------------
+
 World::~World() {
     for (int f = 0; f < filas; f++) {
         delete[] grid[f];
@@ -42,10 +37,7 @@ World::~World() {
     delete[] entidades;           // solo el arreglo, no lo que apunta
 }
 
-// ---------------------------------------------------------------------------
-// create_world: deja el mundo limpio. Todo blanco y las ultimas 6 filas
-// de piso rojo. Es la funcion create_world() que pide el enunciado.
-// ---------------------------------------------------------------------------
+
 void World::create_world() {
     for (int f = 0; f < filas; f++) {
         for (int c = 0; c < cols; c++) {
@@ -54,7 +46,11 @@ void World::create_world() {
     }
     for (int f = filas - ALTO_PISO; f < filas; f++) {
         for (int c = 0; c < cols; c++) {
-            grid[f][c] = Color::RED;        // el piso de ladrillo
+            if (c < 179 || 179 + 17 < c) {
+                grid[f][c] = Color::RED;
+            } else {
+                grid[f][c] = Color::WHITE;
+            }
         }
     }
 }
@@ -71,13 +67,7 @@ void World::draw_world() {
     }
 }
 
-// ---------------------------------------------------------------------------
-// collect_coins: revisa que entidades estan chocando con Mario y les
-// avisa. Es la funcion collect_coins() que pide el enunciado.
-// POLIMORFISMO otra vez: la misma llamada a onTouch da una moneda si es
-// un Block de signo, o termina el juego si es el Goomba.
-// Saltamos a Mario para que no choque consigo mismo.
-// ---------------------------------------------------------------------------
+
 void World::collect_coins(Player& mario) {
     for (int i = 0; i < nEntidades; i++) {
         if (entidades[i] == &mario) {
@@ -89,12 +79,9 @@ void World::collect_coins(Player& mario) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// add: registra una entidad para dibujarla. La llama Game::init.
-// ---------------------------------------------------------------------------
 void World::add(Entity* e) {
     if (nEntidades < maxEntidades) {
-        entidades[nEntidades] = e;          // entidades -> atributo de World
+        entidades[nEntidades] = e;
         nEntidades++;
     }
 }

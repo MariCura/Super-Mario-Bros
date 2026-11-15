@@ -1,29 +1,17 @@
 #include "Entity.h"
-#include "World.h"        // aqui si lo necesitamos completo: usamos World::paint
+#include "World.h"
 
-// ---------------------------------------------------------------------------
-// Constructor: guarda la posicion y toma posesion del sprite.
-// ---------------------------------------------------------------------------
 Entity::Entity(int fila, int col, Sprite* sprite) {
-    this->fila   = fila;        // fila   -> atributo de Entity
-    this->col    = col;         // col    -> atributo de Entity
-    this->sprite = sprite;      // sprite -> atributo de Entity (COMPOSICION)
+    this->fila   = fila;
+    this->col    = col;
+    this->sprite = sprite;
 }
 
-// ---------------------------------------------------------------------------
-// Destructor: como Entity es dueno del sprite, lo borra.
-// Es virtual para que al hacer delete sobre un Entity* se llame al
-// destructor de la clase hija correcta (Player, Goomba o Block).
-// ---------------------------------------------------------------------------
+
 Entity::~Entity() {
-    delete sprite;              // sprite -> atributo de Entity
+    delete sprite;
 }
 
-// ---------------------------------------------------------------------------
-// pintarSprite: el unico doble for de pintado de todo el proyecto.
-// Recorre el dibujo y le pide a World que pinte celda por celda.
-// Las celdas con Color::NONE no se pintan (las ignora World::paint).
-// ---------------------------------------------------------------------------
 void Entity::pintarSprite(World& mundo, Sprite* dibujo) {
     for (int i = 0; i < dibujo->getAlto(); i++) {          // getAlto  -> de Sprite
         for (int j = 0; j < dibujo->getAncho(); j++) {     // getAncho -> de Sprite
@@ -33,20 +21,10 @@ void Entity::pintarSprite(World& mundo, Sprite* dibujo) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// draw: version por defecto, dibuja el sprite propio.
-// Player y Goomba la usan tal cual; Block la redefine (POLIMORFISMO).
-// ---------------------------------------------------------------------------
 void Entity::draw(World& mundo) {
     pintarSprite(mundo, sprite);   // pintarSprite -> metodo propio de Entity
 }
 
-// ---------------------------------------------------------------------------
-// collides: choque entre dos rectangulos.
-// Se cruzan si se cruzan en filas Y se cruzan en columnas.
-// Reemplaza a la funcion touch() del proyecto 1, pero sirve para cualquier
-// par de entidades, no solo para los tres bloques.
-// ---------------------------------------------------------------------------
 bool Entity::collides(const Entity& otra) const {
     bool cruzanFilas = (fila < otra.fila + otra.getAlto()) &&
                        (otra.fila < fila + getAlto());
@@ -58,25 +36,25 @@ bool Entity::collides(const Entity& otra) const {
 }
 
 int Entity::getFila() const {
-    return fila;                   // fila -> atributo de Entity
+    return fila;
 }
 
 int Entity::getCol() const {
-    return col;                    // col -> atributo de Entity
+    return col;
 }
 
 int Entity::getAlto() const {
-    return sprite->getAlto();      // getAlto -> de Sprite
+    return sprite->getAlto();
 }
 
 int Entity::getAncho() const {
-    return sprite->getAncho();     // getAncho -> de Sprite
+    return sprite->getAncho();
 }
 
 void Entity::setFila(int f) {
-    fila = f;                      // fila -> atributo de Entity
+    fila = f;
 }
 
 void Entity::setCol(int c) {
-    col = c;                       // col -> atributo de Entity
+    col = c;
 }

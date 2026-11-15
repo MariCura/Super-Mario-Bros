@@ -3,19 +3,9 @@
 
 #include "Sprite.h"       // de aqui viene: Sprite
 
-class World;              // declaracion adelantada (World.h se incluye en el .cpp)
-class Player;             // declaracion adelantada (Player hereda de Entity)
+class World;
+class Player;
 
-// ---------------------------------------------------------------------------
-// Clase Entity  (ABSTRACTA)  -> aqui viven la HERENCIA y el POLIMORFISMO
-// Todo lo que se dibuja en el mundo tiene fila, columna y un sprite.
-// Lo unico que cambia entre Mario, el goomba y los bloques es:
-//   - que pasa cuando Mario los toca  -> onTouch (virtual pura)
-//   - que sprite se dibuja            -> draw (virtual, Block la redefine)
-//
-// Relaciones: Entity *-- Sprite      (composicion: la crea y la destruye)
-//             World  o-- Entity      (agregacion: World solo guarda punteros)
-// ---------------------------------------------------------------------------
 class Entity {
 protected:
     int     fila;         // fila superior izquierda dentro del mundo
