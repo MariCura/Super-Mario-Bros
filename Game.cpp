@@ -70,11 +70,7 @@ Block* Game::crearTuberia(int fila, int col) {
     return new Block(fila, col, normal, false);
 }
 
-// ---------------------------------------------------------------------------
-// crearEntidades: el escenario completo repartido en las 240 columnas.
-// El piso ocupa las filas 44 a 49, asi que todo lo que va en el suelo
-// termina justo en la fila 44 (fila inicial + alto del sprite = 44).
-// ---------------------------------------------------------------------------
+
 void Game::crearEntidades() {
     // 03 arbustos (7 de alto): 37 + 7 = 44
     agregar(crearArbusto(37, 22));
@@ -113,12 +109,11 @@ void Game::crearEntidades() {
 
     agregar(new Goomba(28, 224));
 
-    // Mario va al final para que se dibuje encima de todo lo demas.
     agregar(mario);
 }
 
 // ---------------------------------------------------------------------------
-// dibujar: los tres pasos de cada frame.
+// dibujar: los tres pasos de cada fotograma
 //   1. la camara recalcula con la columna de Mario
 //   2. el mundo se repinta completo
 //   3. la camara imprime solo las 90 columnas visibles
