@@ -7,7 +7,6 @@
 
 #include <string>
 #include <vector>
-#include "Game.h"
 #include "World.h"
 #include "Camera.h"
 #include "Player.h"

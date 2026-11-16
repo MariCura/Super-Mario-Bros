@@ -4,8 +4,10 @@
 using namespace std;
 
 
-Player::Player(int fila, int col)
+Player::Player(int fila, int col, int filas, int cols)
     : Entity(fila, col, new Sprite(16, 12, &MARIO_SPRITE[0][0], MARIO_PALETTE, 6)) {
+    filasMundo = filas;
+    colsMundo = cols;
     coins    = 0;
     vivo     = true;
     enElAire = false;
@@ -13,7 +15,7 @@ Player::Player(int fila, int col)
 
 void Player::onTouch(Player&) {
 }
-bool Player::move_player(const string& opcion, int filasMundo, int colsMundo) {
+bool Player::operator+=(const string& opcion) {
     int nuevaFila = fila;      // fila -> heredado de Entity
     int nuevaCol  = col;       // col  -> heredado de Entity
     enElAire = false;
@@ -39,16 +41,10 @@ bool Player::move_player(const string& opcion, int filasMundo, int colsMundo) {
         enElAire = true;
     }
     else {
-        enElAire = false;
         return false;
     }
 
-    // Revisamos que el rectangulo de Mario entre completo en el mundo.
-    if (nuevaFila < 0 || nuevaFila + getAlto() > filasMundo) {   // getAlto -> de Entity
-        enElAire = false;
-        return false;
-    }
-    if (nuevaCol < 0 || nuevaCol + getAncho() > colsMundo) {     // getAncho -> de Entity
+    if (nuevaFila<0 || nuevaFila + getAlto()>filasMundo || nuevaCol<0 || nuevaCol + getAncho() > colsMundo) {
         enElAire = false;
         return false;
     }

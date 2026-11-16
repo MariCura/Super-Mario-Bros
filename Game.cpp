@@ -128,7 +128,7 @@ void Game::init() {
 
     mundo     = new World(FILAS_MUNDO, COLS_MUNDO);
     camara    = new Camera(ANCHO_ESCENA, MARGEN_CAMARA);
-    mario     = new Player(FILA_INICIAL, COL_INICIAL);
+    mario     = new Player(FILA_INICIAL, COL_INICIAL, FILAS_MUNDO, COLS_MUNDO);
     entidades = new Entity*[MAX_ENTIDADES_JUEGO];
 
     crearEntidades();               // crearEntidades -> metodo de Game
@@ -146,7 +146,7 @@ void Game::ejecutar(const string& linea) {
     string opcion;
 
     while (ss >> opcion) {
-        bool valido = mario->move_player(opcion, mundo->getFilas(), mundo->getCols());
+        bool valido = (*mario += opcion);
 
         if (!valido) {
             cout << "$ invalid operation" << "\n";

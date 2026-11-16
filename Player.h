@@ -10,14 +10,15 @@ private:
     int  coins;
     bool vivo;
     bool enElAire;
+    int filasMundo;
+    int colsMundo;
 
 public:
-    Player(int fila, int col);
+    Player(int fila, int col, int filas, int cols);
     void onTouch(Player&);
 
 
-    bool move_player(const std::string& opcion, int filasMundo, int colsMundo);
-
+    bool operator+=(const std::string& opcion);
     void caer();
     bool isEnElAire() const;
 
