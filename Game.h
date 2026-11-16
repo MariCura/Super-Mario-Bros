@@ -21,7 +21,7 @@ const int COLS_MUNDO     = 240;
 const int ANCHO_ESCENA   = 90;
 const int MARGEN_CAMARA  = 42;
 const int FILA_INICIAL   = 28;
-const int COL_INICIAL    = 24;
+const int COL_INICIAL    = 1;
 const int MAX_ENTIDADES_JUEGO = 32;
 const int N_SIGNOS       = 6;     // Numero de coins p
 

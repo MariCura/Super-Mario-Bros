@@ -2,7 +2,7 @@
 
 const int ALTO_PISO = 6;
 
-const int MAX_ENTIDADES = 32;
+const int MAX_ENTIDADES = 30;
 
 // ---------------------------------------------------------------------------
 // Constructor: reserva la matriz de colores y el arreglo de punteros.

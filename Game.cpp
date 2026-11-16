@@ -76,7 +76,7 @@ void Game::crearEntidades() {
     agregar(crearArbusto(37, 22));
     agregar(crearArbusto(37, 30));
     agregar(crearArbusto(37, 38));
-    agregar(crearArbusto(37, 84));
+    agregar(crearArbusto(37, 99));
 
     agregar(crearArbusto(37, 189));
     agregar(crearArbusto(37, 218));
@@ -84,18 +84,18 @@ void Game::crearEntidades() {
     agregar(crearTuberia(22, 135));
 
     // 03 bloques de madera, a la altura de salto de Mario
-    agregar(crearMadera(10, 70));
-    agregar(crearMadera(10, 88));
-    agregar(crearMadera(10, 106));
+    agregar(crearMadera(10, 74));
+    agregar(crearMadera(10, 92));
+    agregar(crearMadera(10, 110));
 
     agregar(crearMadera(10, 231));
     agregar(crearMadera(10, 213));
     agregar(crearMadera(10, 195));
 
     // 03 bloques de signo (los que dan moneda), intercalados con las maderas
-    signos[0] = crearSigno(10, 35);
-    signos[1] = crearSigno(10, 79);
-    signos[2] = crearSigno(10, 97);
+    signos[0] = crearSigno(10, 39);
+    signos[1] = crearSigno(10, 83);
+    signos[2] = crearSigno(10, 101);
 
     signos[3] = crearSigno(10, 222);
     signos[4] = crearSigno(10, 204);
